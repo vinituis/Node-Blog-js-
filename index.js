@@ -41,6 +41,14 @@ const Post = require('./models/Post')
         })
     })
 
+    app.get('/deletar/:id', (req, res) => {
+        Post.destroy({where: {'id': req.params.id}}).then(() => {
+            res.send("Postagem deletada!")
+        }).catch((erro) => {
+            res.send(erro)
+        })
+    })
+
 app.listen(8081, function(){
-    console.log("Servidor rodando")
+    console.log("Servidor rodando em http://localhost:8081")
 });
